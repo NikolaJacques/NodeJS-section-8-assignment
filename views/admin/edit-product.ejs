@@ -1,0 +1,23 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="product-form" action="/admin/product-edited" method="POST">
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<%= item.title %>">
+                <label for="price">Price</label>
+                <input type="number" step="0.01" name="price" id="price" value="<%= item.price %>">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" value="<%= item.description %>">
+                <input type="hidden" name="id" value="<%= item.id %>">
+            </div>
+            <button class="btn" type="submit">Submit changes</button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>

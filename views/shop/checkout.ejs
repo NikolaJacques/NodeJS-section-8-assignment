@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+    <main>
+        <h1>Checkout</h1>
+        <% if (items.length > 0) { %>
+            <table>
+                <thead><b>Order Overview:</b></thead>
+                <% for (let product of items) { %>
+                    <tr>
+                        <td><%= product.title %></td>
+                        <td>|</td>
+                        <td><%= product.price %></td> 
+                    </tr>
+                <% } %>
+                <tr>
+                    <td><u>Total:</u></td>
+                    <td><%= total %></td>
+                </tr>
+            </table>
+            <form action="/confirm-purchase" method="POST">
+                <button type="submit">Confirm purchase</button>
+            </form>
+            <a href="/cart"><button>Back to Cart</button></a>
+        <% } else { %>
+            <h1>No Products in Cart</h1>
+        <% } %>
+    </main>
+    <form action="/checkout" method="POST">
+
+    </form>
+<%- include('../includes/end.ejs') %>
